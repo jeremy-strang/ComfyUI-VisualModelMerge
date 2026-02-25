@@ -34,6 +34,6 @@ See [example/VisualModelMergeSDXL.json](example/VisualModelMergeSDXL.json) for a
 
 ### Merge Behavior
 
-- **100** = Use model2's weights fully for that block
-- **0** = Use model1's weights fully for that block
+- **100** = Use model 1's weights fully for that block
+- **0** = Use model 2's weights fully for that block
 - Values in between blend proportionally

@@ -28,6 +28,8 @@ const COLORS = {
 
 const CURVE_HEIGHT = 200;
 const PAD = { l: 45, r: 10, t: 8, b: 50 };
+const WRAPPER_PAD = { l: 15, r: 15, t: 10, b: 15 }; // Padding around the graph within the node
+const MIN_NODE_HEIGHT = 400; // Minimum height to contain widgets + graph
 
 function clamp(x, lo, hi) {
     return Math.max(lo, Math.min(hi, x));
@@ -91,9 +93,10 @@ app.registerExtension({
                 app.canvas.setDirty(true, true);
             }, { serialize: false });
 
-            // Set node size
+            // Set node size with minimum dimensions to contain widgets and graph
             this.size[0] = Math.max(this.size[0], 420);
-            this.size[1] = this.computeSize()[1] + CURVE_HEIGHT + 10;
+            const requiredHeight = this.computeSize()[1] + WRAPPER_PAD.t + CURVE_HEIGHT + WRAPPER_PAD.b;
+            this.size[1] = Math.max(requiredHeight, MIN_NODE_HEIGHT);
 
             return r;
         };
@@ -106,12 +109,12 @@ app.registerExtension({
         };
 
         nodeType.prototype.getCurveArea = function () {
-            // Curve area is at the bottom of the node, after all widgets
+            // Curve area is at the bottom of the node, after all widgets, with wrapper padding
             const widgetsHeight = this.computeSize()[1];
             return {
-                x: 0,
-                y: widgetsHeight,
-                w: this.size[0],
+                x: WRAPPER_PAD.l,
+                y: widgetsHeight + WRAPPER_PAD.t,
+                w: this.size[0] - WRAPPER_PAD.l - WRAPPER_PAD.r,
                 h: CURVE_HEIGHT,
             };
         };
@@ -353,6 +356,19 @@ app.registerExtension({
             return onMouseUp?.apply(this, arguments);
         };
 
+        // Handle resize to enforce minimum dimensions
+        const onResize = nodeType.prototype.onResize;
+        nodeType.prototype.onResize = function (size) {
+            const minWidth = 420;
+            const requiredHeight = this.computeSize()[1] + WRAPPER_PAD.t + CURVE_HEIGHT + WRAPPER_PAD.b;
+            const minHeight = Math.max(requiredHeight, MIN_NODE_HEIGHT);
+
+            size[0] = Math.max(size[0], minWidth);
+            size[1] = Math.max(size[1], minHeight);
+
+            return onResize?.apply(this, arguments);
+        };
+
         // Handle loading saved workflows
         const onConfigure = nodeType.prototype.onConfigure;
         nodeType.prototype.onConfigure = function (info) {
@@ -368,8 +384,9 @@ app.registerExtension({
                 } catch (e) {}
             }
 
-            // Ensure proper size
-            this.size[1] = this.computeSize()[1] + CURVE_HEIGHT + 10;
+            // Ensure proper size with minimum height
+            const requiredHeight = this.computeSize()[1] + WRAPPER_PAD.t + CURVE_HEIGHT + WRAPPER_PAD.b;
+            this.size[1] = Math.max(requiredHeight, MIN_NODE_HEIGHT);
 
             return r;
         };

@@ -15,5 +15,4 @@ Documentation = "https://github.com/jeremy-strang/ComfyUI-VisualModelMerge/wiki"
 [tool.comfy]
 PublisherId = "jeremy-strang"
 DisplayName = "Visual Model Merge"
-Icon = ""
-
+Icon = "icon.svg"

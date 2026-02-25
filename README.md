@@ -13,7 +13,11 @@ A ComfyUI custom node that provides an interactive curve editor for SDXL model b
 
 ## Installation
 
-Copy this folder to your `ComfyUI/custom_nodes/` directory and restart ComfyUI.
+Clone this folder to your `ComfyUI/custom_nodes/` directory and restart ComfyUI:
+
+```bash
+git clone https://github.com/jeremy-strang/ComfyUI-VisualModelMerge.git
+```
 
 ## Usage
 

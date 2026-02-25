@@ -1,4 +1,7 @@
-# Visual Model Merge SDXL
+<h1 style="display:flex; align-items:center; gap:12px;">
+  <img src="icon.svg" style="width:96px; height:96px;">
+  <span>Visual Model Merge SDXL</span>
+</h1>
 
 A ComfyUI custom node that provides an interactive curve editor for SDXL model block weight merging.
 
@@ -13,9 +16,7 @@ A ComfyUI custom node that provides an interactive curve editor for SDXL model b
 
 ## Installation
 
-Install via the [https://registry.comfy.org/publishers/jeremy-strang/nodes/comfyui-visualmodelmerge](ComfyUI Manager)
-
-Alternatively, you can clone this folder to your `ComfyUI/custom_nodes/` directory and restart ComfyUI:
+Install via the [ComfyUI Manager](https://registry.comfy.org/publishers/jeremy-strang/nodes/comfyui-visualmodelmerge), or you can clone this folder to your `ComfyUI/custom_nodes/` directory and restart ComfyUI:
 
 ```bash
 git clone https://github.com/jeremy-strang/ComfyUI-VisualModelMerge.git

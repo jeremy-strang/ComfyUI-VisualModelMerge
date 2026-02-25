@@ -1,0 +1,19 @@
+[project]
+name = "comfyui-visualmodelmerge"
+description = "A ComfyUI custom node that provides an interactive curve editor for SDXL model block weight merging."
+version = "1.0.0"
+license = "GPL-3.0-or-later"
+classifiers = [
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Repository = "https://github.com/jeremy-strang/ComfyUI-VisualModelMerge"
+Documentation = "https://github.com/jeremy-strang/ComfyUI-VisualModelMerge/wiki"
+"Bug Tracker" = "https://github.com/jeremy-strang/ComfyUI-VisualModelMerge/issues"
+
+[tool.comfy]
+PublisherId = "jeremy-strang"
+DisplayName = "Visual Model Merge"
+Icon = ""
+

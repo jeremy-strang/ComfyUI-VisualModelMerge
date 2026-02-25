@@ -2,7 +2,7 @@
 
 A ComfyUI custom node that provides an interactive curve editor for SDXL model block weight merging.
 
-![Visual Model Merge SDXL](assets/screenshot.jpg)
+![Visual Model Merge SDXL](examples/screenshot.jpg)
 
 ## Features
 
@@ -25,7 +25,7 @@ git clone https://github.com/jeremy-strang/ComfyUI-VisualModelMerge.git
 2. Connect two SDXL models to `model1` and `model2` inputs
 3. Drag on the curve to adjust block weights (values 0-100, converted to 0.0-1.0 internally)
 
-See [example/VisualModelMergeSDXL.json](example/VisualModelMergeSDXL.json) for a sample workflow.
+See [examples/VisualModelMergeSDXL.json](example/VisualModelMergeSDXL.json) for a sample workflow.
 
 ### Controls
 
